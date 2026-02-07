@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Yuji+Syuku&display=swap');
+
+:root {
+  --gold-color: #ffd700;
+  --gold-shadow: #b8860b;
+  --bg-dark: #1a0b0b;
+  --accent-red: #d7000f;
+  --accent-purple: #800080;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Yuji Syuku', serif;
+  background-color: var(--bg-dark);
+  color: #fff;
+  overflow: hidden;
+  /* Prevent scroll on drag */
+  touch-action: none;
+  /* For better drag support on mobile */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #2e1a1a 0%, #000 100%);
+}
+
+/* Background Animation: Falling Petals / Gold Dust */
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image:
+    radial-gradient(var(--gold-color) 1px, transparent 1px),
+    radial-gradient(var(--gold-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.3;
+  animation: sparkle-bg 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes sparkle-bg {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+/* Utilities */
+.gorgeous-text {
+  font-family: 'Kaisei Decol', serif;
+  background: linear-gradient(to bottom, #fff 0%, var(--gold-color) 50%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px var(--gold-shadow);
+}
+
+.gorgeous-btn {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  color: #fff;
+  background: linear-gradient(45deg, var(--accent-red), #ff4500);
+  border: 4px solid var(--gold-color);
+  border-radius: 50px;
+  box-shadow: 0 0 20px var(--gold-shadow), inset 0 0 10px #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.gorgeous-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+.gorgeous-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px var(--gold-color);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Animations */
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-5px, 5px) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate(5px, -5px) rotate(2deg);
+  }
+
+  75% {
+    transform: translate(-5px, -5px) rotate(-2deg);
+  }
+}
+
+@keyframes laugh {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+
+.fade-in {
+  animation: pop-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
